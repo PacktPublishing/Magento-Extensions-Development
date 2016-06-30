@@ -1,0 +1,37 @@
+<?php /** @var $block \Blackbird\TicketBlaster\Block\EventList */ ?>
+<h1><?php echo __('Event list') ?></h1>
+
+<ul class="ticketblaster-events-list">
+    
+    <?php /** @var $event \Blackbird\TicketBlaster\Model\Event */ ?>
+    <?php foreach ($block->getEvents() as $event): ?>
+        <li class="ticketblaster-event-list-item">
+            <h3 class="ticketblaster-event-item-title">
+                <?php if($block->isLoggedIn()): ?>
+                    <a href="<?php echo $event->getUrl() ?>"><?php echo $event->getTitle() ?></a>
+                <?php else: ?>
+                    <?php echo $event->getTitle() ?>
+                <?php endif; ?>
+            </h3>
+
+            <div class="ticketblaster-event-item-content">
+                <?php echo $event->getContent(); ?>
+            </div>
+
+            <div class="ticketblaster-event-item-meta">
+                <strong><?php echo __('Event time:') ?></strong> <?php echo $event->getEventTime() ?>
+            </div>
+            
+            <?php if($block->isLoggedIn()): ?>
+                <div class="ticketblaster-event-readmore">
+                    <a href="<?php echo $event->getUrl() ?>">&raquo; <?php echo __('Read more') ?></a>
+                </div>
+            <?php else: ?>
+                <div class="ticketblaster-event-readmore">
+                    <i><?php echo __('Please sign in to read more details.'); ?></i>
+                </div>
+            <?php endif; ?>
+        </li>
+    <?php endforeach; ?>
+        
+</ul>

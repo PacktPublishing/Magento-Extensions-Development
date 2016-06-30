@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Blackbird_TicketBlaster::ticketblaster" title="TicketBlaster" module="Blackbird_TicketBlaster" sortOrder="50" parent="Magento_Backend::content" resource="Blackbird_TicketBlaster::ticketblaster" />
+        <add id="Blackbird_TicketBlaster::ticketblaster_event" title="Events" module="Blackbird_TicketBlaster" sortOrder="0" parent="Blackbird_TicketBlaster::ticketblaster" action="ticketblaster/event" resource="Blackbird_TicketBlaster::ticketblaster_event"/>
+    </menu>
+</config>

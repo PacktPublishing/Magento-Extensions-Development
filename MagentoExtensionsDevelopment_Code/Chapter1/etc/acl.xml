@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::content">
+                    <resource id="Blackbird_TicketBlaster::ticketblaster" title="TicketBlaster" sortOrder="10" >
+                        <resource id="Blackbird_TicketBlaster::ticketblaster_event" title="Events" sortOrder="40">
+                            <resource id="Blackbird_TicketBlaster::ticketblaster_event_save" title="Save" sortOrder="10" />
+                            <resource id="Blackbird_TicketBlaster::ticketblaster_event_delete" title="Delete" sortOrder="20" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

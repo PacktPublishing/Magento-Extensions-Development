@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Blackbird\TicketBlaster\Api\Data\EventInterface" type="Blackbird\TicketBlaster\Model\Event" />
+    <virtualType name="EventGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="EventGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Blackbird\TicketBlaster\Model\ResourceModel\Event\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">EventGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    
+    <type name="Blackbird\TicketBlaster\Logger\Handler\Warning">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+        
+    <type name="Blackbird\TicketBlaster\Logger\Custom">
+        <arguments>
+            <argument name="name" xsi:type="string">myLoggerName</argument>
+            <argument name="handlers"  xsi:type="array">
+                <!-- emergency -->
+                <!-- alert -->
+                <!-- critical -->
+                <!-- error -->
+                <!-- warning --><item name="warning" xsi:type="object">Blackbird\TicketBlaster\Logger\Handler\Warning</item>
+                <!-- notice -->
+                <!-- info -->
+                <!-- debug -->
+            </argument>
+        </arguments>
+    </type>
+    
+    <type name="Blackbird\TicketBlaster\Model\ResourceModel\Event\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">blackbird_ticketblaster_event</argument>
+            <argument name="eventPrefix" xsi:type="string">ticketblaster_event_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">ticketblaster_event_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Blackbird\TicketBlaster\Model\ResourceModel\Event</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="ticketblaster_event_listing_data_source" xsi:type="string">Blackbird\TicketBlaster\Model\ResourceModel\Event\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

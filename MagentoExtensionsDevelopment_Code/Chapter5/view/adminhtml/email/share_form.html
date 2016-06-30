@@ -1,0 +1,12 @@
+<!--@subject Share Form@-->
+<!--@vars {
+"var post.email":"Sharer Email",
+"var event.title":"Event Title",
+"var event.venue":"Event Venue"
+} @-->
+
+<p>{{trans "Your friend %email is sharing an event with you:" email=$post.email}}</p>
+{{trans "Title: %title" title=$event.title}}<br/>
+{{trans "Venue: %venue" venue=$event.venue}}<br/>
+
+<p>{{trans "View the detailed page: %url" url=$event.url}}</p>

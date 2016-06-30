@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Catalog:etc/product_types.xsd">
+    <type name="ticket" label="Ticket Product" modelInstance="Blackbird\TicketBlaster\Model\Product\Type\Ticket" indexPriority="30" sortOrder="30">
+        <customAttributes>
+            <attribute name="refundable" value="true"/>
+            <attribute name="is_real_product" value="false"/>
+            <attribute name="taxable" value="true"/>
+        </customAttributes>
+    </type>
+    <composableTypes>
+        <type name="ticket" />
+    </composableTypes>
+</config>

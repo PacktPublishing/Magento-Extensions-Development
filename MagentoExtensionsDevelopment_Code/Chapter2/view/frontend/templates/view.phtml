@@ -1,0 +1,20 @@
+<?php
+    /** @var $block \Blackbird\TicketBlaster\Block\EventView */
+    /** @var $event \Blackbird\TicketBlaster\Model\Event */
+
+    $event = $block->getEvent();
+?>
+
+<h1 class="ticketblaster-event-item-title"><?php echo $event->getTitle() ?></h1>
+<div class="ticketblaster-event-item-content">
+    <strong><?php echo __('Event time:') ?></strong> <?php echo $event->getEventTime(); ?><br/>
+    <?php echo $event->getVenue(); ?><br/>
+</div>
+
+<form action="<?php echo $block->getUrl('events/view/share', array('event_id' => $event->getId())); ?>" method="post" id="form-validate" class="form">
+    <h3>
+        <?php echo __('Share this event to my friend'); ?>
+    </h3>
+    <input type="email" name="email" class="input-text" placeholder="email" />
+    <button type="submit" class="button"><?php echo __('Share'); ?></button>
+</form>
