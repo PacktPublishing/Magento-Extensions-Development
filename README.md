@@ -7,7 +7,9 @@ This is the code repository for [Magento Extensions Development](https://www.pac
 
 As a Magento developer, you already have a local web server such as Apache or
 Nginx and a database server such as MySQL. 
-Software required (With version)
+
+## Software required (With version)
+
 * Magento (version >= 2.0.5)
 * Composer (version >= 1.0)
 * Git client (version >= 2.1.4)
